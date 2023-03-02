@@ -70,6 +70,18 @@ describe MagicSeven do
   # Write a test for each of the following methods:
 
   describe '#subtract_four' do
+    context 'when called with a number,' do
+      it 'returns result of subtracting 4 from it' do
+        # Arrange
+        number = 10
+
+        # Act
+        result = game.subtract_four(number)
+      
+        # Assert
+        expect(result)
+      end
+    end
   end
 
   describe '#divide_by_two' do
