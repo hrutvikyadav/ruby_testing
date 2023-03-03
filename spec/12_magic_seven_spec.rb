@@ -77,7 +77,7 @@ describe MagicSeven do
 
         # Act
         result = game.subtract_four(number)
-      
+
         # Assert
         expect(result)
       end
@@ -85,31 +85,56 @@ describe MagicSeven do
   end
 
   describe '#divide_by_two' do
+    context 'when prev step result is 10' do
+      it 'returns 5' do
+        prev_step = 10
+        result = game.divide_by_two(prev_step)
+        expect(result).to be 5
+      end
+    end
   end
 
   # The following tests will need you to create new instances of MagicSeven with
   # a specific value for the random_number.
   describe '#subtract_random_number' do
+    context 'when prev step is 100, random number is 10' do
+      prev_step = 100
+      subject(:new_o) { described_class.new(10) }
+
+      it 'returns 100-10: 90' do
+        res = new_o.subtract_random_number(prev_step)
+        expect(res).to be 90
+      end
+    end
   end
 
   # The #play method will always return seven! Test this game, using any
   # integer as the random_number. Update the context with the number.
   describe '#play' do
-    context 'when the random number is ...' do
+    context 'when the random number is 20' do
+      subject(:new_o) { described_class.new(20) }
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      it 'will return 7' do
+        res = new_o.play
+        expect(res).to be 7
       end
     end
 
-    context 'when the random number is ...' do
+    context 'when the random number is 100' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      subject(:new_o) { described_class.new(100) }
+      it 'will return 7' do
+        res = new_o.play
+        expect(res).to be 7
       end
     end
 
-    context 'when the random number is ...' do
+    context 'when the random number is 40' do
       # remove the 'x' before running this test
-      xit 'will return 7' do
+      subject(:new_o) { described_class.new(40) }
+      it 'will return 7' do
+        res = new_o.play
+        expect(res).to be 7
       end
     end
   end

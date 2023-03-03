@@ -19,7 +19,7 @@ require_relative '../lib/14_find_number'
 # lib/14_find_number.rb file. An instance of 'FindNumber' is initialized with
 # min, max, answer and guess. There are default values for answer and guess.
 
-# Note: the 'RandomNumber' class has not been written. During TDD, we will need
+# NOTE: the 'RandomNumber' class has not been written. During TDD, we will need
 # to create a double for RandomNumber in the tests for FindNumber.
 # https://relishapp.com/rspec/rspec-mocks/v/3-9/docs/basics/test-doubles
 
@@ -114,6 +114,7 @@ describe FindNumber do
     # Create a random_number double called 'number_guessing'. Allow the double
     # to receive 'value' and return the value of 8, in one of the two ways
     # explained above.
+    let(:number_guessing) { double('random number', value: 8) }
 
     subject(:game_guessing) { described_class.new(0, 9, number_guessing) }
 
@@ -123,7 +124,9 @@ describe FindNumber do
     # It will fail with an undefined method error because you haven't
     # written #make_guess yet!
     context 'when min is 0 and max is 9' do
-      xit 'returns 4' do
+      it 'returns 4' do
+        return_val = game_guessing.make_guess
+        expect(return_val).to be 4
       end
     end
 
@@ -136,22 +139,30 @@ describe FindNumber do
     # random number double created inside this method's describe block.
 
     context 'when min is 5 and max is 9' do
-      xit 'returns 7' do
+      subject(:game_guessing) { described_class.new(5, 9, number_guessing) }
+      it 'returns 7' do
+        expect(game_guessing.make_guess).to be 7
       end
     end
 
     context 'when min is 8 and max is 9' do
-      xit 'returns 8' do
+      subject(:game_guessing) { described_class.new(8, 9, number_guessing) }
+      it 'returns 8' do
+        expect(game_guessing.make_guess).to be 8
       end
     end
 
     context 'when min is 0 and max is 3' do
-      xit 'returns 1' do
+      subject(:game_guessing) { described_class.new(0, 3, number_guessing) }
+      it 'returns 1' do
+        expect(game_guessing.make_guess).to be 1
       end
     end
 
     context 'when min and max both equal 3' do
-      xit 'returns 3' do
+      subject(:game_guessing) { described_class.new(3, 3, number_guessing) }
+      it 'returns 3' do
+        expect(game_guessing.make_guess).to be 3
       end
     end
   end

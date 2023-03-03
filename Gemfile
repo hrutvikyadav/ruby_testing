@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
 gem 'rspec-core', '3.9.2'
 gem 'rspec-expectations', '3.9.2'
 gem 'rspec-mocks', '3.9.1'
 gem 'rspec-support', '3.9.3'
-gem 'rubocop', '0.82.0'
+gem 'rubocop', '~> 1.47'
+
+gem 'ruby-lsp', '~> 0.4.1', group: :development, require: false
